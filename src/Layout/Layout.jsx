@@ -28,7 +28,10 @@ export default function Layout() {
   return (
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
-        <img src={IOSDLogo} alt="IOSD Logo" style={{backgroundColor: '#322653', height: '100%', borderRadius: '10px'}} />
+        <Group className={classes.imgContainer}>
+
+          <img src={IOSDLogo} alt="IOSD Logo" style={{backgroundColor: '#322653', borderRadius: '10px'}} />
+        </Group>
         <Group gap={5} visibleFrom="xs">
           {items}
         </Group>
