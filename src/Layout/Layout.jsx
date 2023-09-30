@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { Container, Group, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './Layout.module.css';
-import {  NavLink } from 'react-router-dom';
+import {  NavLink, Outlet } from 'react-router-dom';
 import IOSDLogo from '../assets/iosd-mait-white.png';
 
 const links = [
+  { link: '/about', label: 'About' },
   { link: '/team', label: 'Team' },
   { link: '/events', label: 'Events' },
-  { link: '/contact', label: 'Contact Us' },
+  { link: '/members', label: 'Members' },
+  { link: '/sponsers', label: 'Sponser' },
 ];
 
 export default function Layout() {
@@ -25,19 +27,23 @@ export default function Layout() {
     </NavLink>
   ));
 
-  return (
+  return (<>
     <header className={classes.header}>
-      <Container size="md" className={classes.inner}>
-        <Group className={classes.imgContainer}>
+          <NavLink to='/' className={classes.imgContainer}>
 
-          <img src={IOSDLogo} alt="IOSD Logo" style={{backgroundColor: '#322653', borderRadius: '10px'}} />
-        </Group>
+          <img src={IOSDLogo} alt="IOSD Logo" />
+          </NavLink>
+
+
         <Group gap={5} visibleFrom="xs">
           {items}
         </Group>
 
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
-      </Container>
+      {/* <Group size="md" className={classes.inner}>
+      </Group> */}
     </header>
+    <Outlet />
+  </>
   );
 }
